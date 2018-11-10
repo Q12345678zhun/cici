@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="xuanke" extends="struts-default">
+		<action name="insertTeacherAction" class="insertTeacherAction">
+			<result name="success" type="redirectAction">getAllTeachersAction</result>
+			<result name="input">/insertTeacher.jsp</result>
+		</action>
+		<action name="insertCourseAction" class="insertCourseAction">
+			<result name="success" type="redirectAction">getAllCourseAction</result>
+			<result name="input">/insertCourse.jsp</result>
+		</action>
+		<action name="studentLogonAction" class="studentLogonAction">
+			<result type="redirectAction" name="success">getXuankeCourseAction</result>
+			<result name="fail">/index.jsp</result>
+			<result name="input">/index.htm</result>
+			
+		</action>
+		<action name="getXuankeCourseAction" class="getXuankeCourseAction">
+			<result name="success">/xuanke.jsp</result>
+		</action>
+		<action name="adminLogonAction" class="adminLogonAction">
+			<result name="success" type="redirect">/insertCourse.jsp</result>
+			<result name="input">/adminIndex.jsp</result>
+			<result name="fail" type="redirect">/adminIndex.jsp</result>
+		</action>
+		<action name="insertStudentAction" class="insertStudentAction">
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="input">/studentRegist.jsp</result>
+		</action>
+		<action name="xuankeAction" class="xuankeAction">
+			<result name="success" type="redirectAction">getXuankeCourseAction</result>
+		</action>
+		<action name="getSelectedCourseAction" class="getSelectedCourseAction">
+			<result name="success">/tuixuan.jsp</result>
+		</action>
+		<action name="tuixuanAction" class="tuixuanAction">
+			<result name="success" type="redirectAction">getSelectedCourseAction</result>
+		</action>
+		<action name="getTeacherDetailAction" class="getTeacherDetailAction">
+			<result name="success">/teacherDetail.jsp</result>
+		</action>
+		<action name="getCourseDetailAciton" class="getCourseDetailAciton">
+			<result name="success">/courseDetail.jsp</result>
+		</action>
+		<action name="getStudentInfAction" class="getStudentInfAction">
+			<result name="success">/updateStudentInf.jsp</result>
+		</action>
+		<action name="updateStudentInfAction" class="updateStudentInfAction">
+			<result name="success" type="redirectAction">getStudentDetailAction</result>
+		</action>
+
+		<action name="getStudentDetailAction" class="getStudentInfAction">
+			<result name="success">/studentDetail.jsp</result>
+		</action>
+		<action name="getAllTeachersAction" class="getAllTeachersAction">
+			<result name="success">/updateTeacherInf1.jsp</result>
+		</action>
+		<action name="deleteTeacherAction" class="deleteTeacherAction">
+			<result name="success" type="redirectAction">getAllTeachersAction</result>
+		</action>
+		<action name="updateTeacherInfAction" class="updateTeacherInfAction">
+			<result name="success" type="redirectAction">getAllTeachersAction</result>
+		</action>
+		<action name="getAllCourseAction" class="getAllCourseAction">
+			<result name="success">/updateCourseInf1.jsp</result>
+		</action>
+		<action name="getPTeacherDetailAction" class="getPTeacherDetailAction">
+			<result name="success">/updateTeacherInf2.jsp</result>
+		</action>
+		<action name="getPCourseDetailAction" class="getPCourseDetailAction">
+			<result name="success">/updateCourseInf2.jsp</result>
+		</action>
+		<action name="updateCourseInfAction" class="updateCourseInfAction">
+			<result name="success" type="redirectAction">getAllCourseAction</result>
+		</action>
+		<action name="deleteCourseAction" class="deleteCourseAction">
+			<result name="success" type="redirectAction">getAllCourseAction</result>
+		</action>
+	</package>
+</struts>    

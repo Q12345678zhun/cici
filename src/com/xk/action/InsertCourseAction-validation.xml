@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+
+	<field name="course.cno">
+		<field-validator type="required">
+			<message>课程编号不能为空</message>
+		</field-validator>
+		<field-validator type="int">
+			<message>课程编号为整数</message>
+		</field-validator>
+
+	</field>
+	<field name="course.cname">
+		<field-validator type="requiredstring">
+			<message>课程名不能为空</message>
+		</field-validator>
+
+
+	</field>
+	<field name="course.ctime">
+		<field-validator type="requiredstring">
+			<message>上课时间不能为空</message>
+		</field-validator>
+
+
+	</field><field name="course.caddress">
+		<field-validator type="requiredstring">
+			<message>上课地点不能为空</message>
+		</field-validator>
+
+
+	</field>
+	
+</validators>

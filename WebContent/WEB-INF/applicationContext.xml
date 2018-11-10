@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/xuanke" />
+		<property name="username" value="root" />
+		<property name="password" value="123456qw" />
+	</bean>
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>com/xk/bean/Admin.hbm.xml</value>
+				<value>com/xk/bean/Teacher.hbm.xml</value>
+				<value>com/xk/bean/Student.hbm.xml</value>
+				<value>com/xk/bean/Course.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="connection.autoReconnect">true</prop>
+				<prop key="connection.autoReconnectForPools">true</prop>
+				<prop key="connection.is-connection-validation-required">true</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="teacherDao" class="com.xk.dao.impl.TeacherDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	<bean id="adminDao" class="com.xk.dao.impl.AdminDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	<bean id="studentDao" class="com.xk.dao.impl.StudentDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	<bean id="teacherService" class="com.xk.service.impl.TeacherServiceImpl">
+		<property name="teacherDao" ref="teacherDao"></property>
+	</bean>
+	<bean id="studentService" class="com.xk.service.impl.StudentServiceImpl">
+		<property name="studentDao" ref="studentDao"></property>
+	</bean>
+	<bean id="adminService" class="com.xk.service.impl.AdminServiceImpl">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+
+	<bean id="insertTeacherAction" class="com.xk.action.InsertTeacherAction"
+		scope="prototype">
+		<property name="teacherService" ref="teacherService"></property>
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+	<bean id="courseDao" class="com.xk.dao.impl.CourseDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	<bean id="courseService" class="com.xk.service.impl.CourseServiceImpl">
+		<property name="courseDao" ref="courseDao"></property>
+	</bean>
+	<bean id="insertCourseAction" class="com.xk.action.InsertCourseAction"
+		scope="prototype">
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+	<bean id="studentLogonAction" class="com.xk.action.StudentLogonAction"
+		scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+	<bean id="getXuankeCourseAction" class="com.xk.action.GetXuankeCourseAction"
+		scope="prototype">
+		<property name="courseService" ref="courseService"></property>
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+	<bean id="adminLogonAction" class="com.xk.action.AdminLogonAction"
+		scope="prototype">
+		<property name="adminService" ref="adminService"></property>
+	</bean>
+	<bean id="insertStudentAction" class="com.xk.action.InsertStudentAction"
+		scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+	<bean id="xuankeAction" class="com.xk.action.XuankeAction" scope="prototype">
+		<property name="service" ref="studentService"></property>
+	</bean>
+	<bean id="getSelectedCourseAction" class="com.xk.action.GetSelectedCourseAction"
+		scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+	<bean id="tuixuanAction" class="com.xk.action.TuixuanAction"
+		scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+	<bean id="getTeacherDetailAction" class="com.xk.action.GetTeacherDetailAction"
+		scope="prototype">
+		<property name="teacherService" ref="teacherService"></property>
+	</bean>
+	<bean id="getCourseDetailAciton" class="com.xk.action.GetCourseDetailActioon"
+		scope="prototype">
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+	<bean id="getStudentInfAction" class="com.xk.action.GetStudentInfAction"
+		scope="prototype">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+	<bean id="updateStudentInfAction" class="com.xk.action.UpdateStudentInfAction"
+		scope="prototype">
+		<property name="studentServcice" ref="studentService"></property>
+	</bean>
+	<bean id="getAllCourseAction" class="com.xk.action.GetAllCourseAction"
+		scope="prototype">
+		<property name="courseServcie" ref="courseService"></property>
+	</bean>
+	<bean id="getAllTeachersAction" class="com.xk.action.GetAllTeachersAction"
+		scope="prototype">
+		<property name="teacherService" ref="teacherService"></property>
+	</bean>
+	<bean id="deleteTeacherAction" class="com.xk.action.DeleteTeacherAction"
+		scope="prototype">
+		<property name="teacherService" ref="teacherService"></property>
+	</bean>
+	<bean id="updateTeacherInfAction" class="com.xk.action.UpdateTeacherInfAction"
+		scope="prototype">
+		<property name="teacherService" ref="teacherService"></property>
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+	<bean id="getPTeacherDetailAction" class="com.xk.action.GetPTeacherDetailAction"
+		scope="prototype">
+		<property name="teacherService" ref="teacherService"></property>
+	</bean>
+	<bean id="updateCourseInfAction" class="com.xk.action.UpdateCourseInfAction"
+		scope="prototype">
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+	<bean id="deleteCourseAction" class="com.xk.action.DeleteCourseAction"
+		scope="prototype">
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+	<bean id="getPCourseDetailAction" class="com.xk.action.GetPCourseDetailActioon"
+		scope="prototype">
+		<property name="courseService" ref="courseService"></property>
+	</bean>
+</beans>

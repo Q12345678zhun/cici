@@ -1,0 +1,83 @@
+/* 免费模板网  http://www.17tian.com */
+* {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	PADDING-TOP: 0px
+}
+
+BODY {
+	BACKGROUND-COLOR: #ffffff;
+	MARGIN: 0px auto;
+	COLOR: #000000;
+	FONT-SIZE: 11pt
+}
+
+/**/
+.nav {
+	width: 938px;
+	margin: 0 auto;
+	background: url(menu_bj_2.gif) no-repeat 0 0;
+	height: 46px;
+	line-height: 54px;
+	vertical-align: bottom;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.nav ul,.nav li {
+	float: left;
+}
+
+.nav li {
+	width: 120px;
+	display: block;
+	background: url(menu_bj_1.gif) no-repeat 0 50%;
+	padding-left: 2px;
+}
+
+.nav li.bgno1 {
+	background: url(menu_over.jpg) no-repeat 2px 0px;
+	color: #FFFFFF;
+	padding-left: 2px;
+}
+
+.nav li.bgno {
+	background: url(menu_bj_4.gif) no-repeat 0 0px;
+	color: #FFFFFF;
+	padding-left: 2px;
+}
+
+.nav li.bgcolor a {
+	color: #ecde29;
+}
+
+.nav li.bgcolor a:hover {
+	color: #ecde29;
+}
+
+.nav li,.nav li a {
+	float: left;
+	font-size: 13px;
+	color: #FFFFFF;
+}
+
+.nav li a {
+	font-weight: bold;
+	color: #fff;
+	width: 100px;
+	text-align: center;
+	padding-left: 1px;
+	text-decoration: none;
+}
+
+.nav li a:hover {
+	text-decoration: none;
+	background: url(menu_over.jpg) no-repeat;
+	color: #fff;
+}
+
+.nav li.bgno a {
+	color: #fff;
+}

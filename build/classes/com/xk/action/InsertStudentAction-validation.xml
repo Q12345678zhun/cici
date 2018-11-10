@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+
+	<field name="student.sno">
+		<field-validator type="required">
+			<message>学号不能为空</message>
+		</field-validator>
+		<field-validator type="int">
+			<message>学生编号为整数</message>
+		</field-validator>
+
+	</field>
+	<field name="student.sname">
+		<field-validator type="requiredstring">
+			<message>学生姓名不能为空</message>
+		</field-validator>
+
+
+	</field>
+	<field name="student.spassword">
+		<field-validator type="requiredstring">
+			<message>密码不能为空</message>
+		</field-validator>
+	</field>
+	<field name="student.snation">
+		<field-validator type="requiredstring">
+			<message>民族不能为空</message>
+		</field-validator>
+	</field>
+	<field name="student.smajor">
+		<field-validator type="requiredstring">
+			<message>专业不能为空</message>
+		</field-validator>
+	</field>
+	<field name="student.sclass">
+		<field-validator type="requiredstring">
+			<message>班级不能为空</message>
+		</field-validator>
+	</field>
+
+
+</validators>
